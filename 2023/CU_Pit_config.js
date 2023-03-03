@@ -1,7 +1,7 @@
 var config_data = `
 {
-  "title": "Scouting PASS 2023",
-  "page_title": "Charged Up",
+  "title": "FRC5113 | Hatboro-Horsham",
+  "page_title": "Charged Up | Pit",
   "pitConfig": "true",
   "prematch": [
     { "name": "Team Number",
