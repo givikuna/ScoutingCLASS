@@ -104,7 +104,7 @@ function next() {
         submitButton.style.display = "inline-block";
         nextButton.style.display = "none";
     } else {
-        backButton.style.display = "inline-block";
+        backButton.style.display = "inline-block"; //
         submitButton.style.display = "none";
         nextButton.style.display = "inline-block";
     }
