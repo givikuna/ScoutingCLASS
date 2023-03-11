@@ -20,19 +20,22 @@ var pageTitle;
 var pitScoutingh1;
 var partName;
 
+var titles;
+var footer;
+
 //
 
-function launch(file) {
-    if (file == "index") {
-        currentPage = 1;
-    }
-    setUpVals();
-    backButton.display = "none";
-    submitButton.display = "none";
+function launch() {
+    currentPage = 1;
+    setUpElements();
+    backButton.style.display = "none";
+    submitButton.style.display = "none";
     namer();
+    titles.style.textAlign = "center";
+    footer.style.textAlign = "center";
 }
 
-function setUpVals() {
+function setUpElements() {
     page1 = document.getElementById('page1');
     page2 = document.getElementById('page2');
     page3 = document.getElementById('page3');
@@ -47,10 +50,16 @@ function setUpVals() {
     pageTitle = document.getElementById('pageTitle');
     pitScoutingh1 = document.getElementById('pitScouting');
     partName = document.getElementById("partName");
+
+    titles = document.getElementById('titles');
+    footer = document.getElementById('footer');
+
+    titles.style.textAlign = "center";
+    footer.style.textAlign = "center";
 }
 
 function namer() {
-    switch(currentPage) {
+    switch (currentPage) {
         case 1:
             partName.innerHTML = "PRE-MATCH";
             break;
@@ -72,26 +81,37 @@ function namer() {
     }
 }
 
+function fixPages() {
+    for (var i = 1; i <= 6; i++) {
+        document.getElementById("page" + i).style.display = "none";
+    }
+    document.getElementById("page" + currentPage.toString()).style.display = "block";
+}
+
 function next() {
-    setUpVals();
+    fixPages();
+    setUpElements();
     currentPage += 1;
 
     if (currentPage === 1) {
-        backButton.display = "none";
-        submitButton.display = "none";
-        nextButton.display = "block";
+        backButton.style.display = "none";
+        submitButton.style.display = "none";
+        nextButton.style.display = "inline-block";
+
+        page1.display = "inline-block";
     } else if (currentPage === 6) {
-        backButton.display = "block";
-        submitButton.display = "block";
-        nextButton.display = "none";
+        backButton.style.display = "inline-block";
+        submitButton.style.display = "inline-block";
+        nextButton.style.display = "none";
     } else {
-        backButton.display = "block";
-        submitButton.display = "none";
-        nextButton.display = "block";
+        backButton.style.display = "inline-block";
+        submitButton.style.display = "none";
+        nextButton.style.display = "inline-block";
     }
 
     namer();
     catchInfo();
+    // footer.style.margin = "0 auto";
 }
 
 function catchInfo() {
@@ -99,11 +119,15 @@ function catchInfo() {
 }
 
 function back() {
-    //
+    fixPages();
+    setUpElements();
+    currentPage -= 1;
+
+
 }
 
 function submit() {
-    //
+    catchInfo();
 }
 
 function isDisplayed(id) {
